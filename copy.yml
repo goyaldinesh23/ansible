@@ -1,0 +1,12 @@
+- name: "copying file through copy module"
+  hosts:
+         server2
+         server1
+  tasks:
+    - name: "using copy module to copy a file from control node to server"
+      copy: src=test.txt dest=/din/1/
+
+
+
+Output
+copies test.txt file from control node to server 1 and 2. 
