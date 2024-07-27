@@ -1,0 +1,32 @@
+Process:
+Login to control node and create a script.
+
+
+#!/bin/bash
+pwd >> /din/1/filebyscript.txt
+echo "first argument: $1" >> /din/1/filebyscript.txt
+echo "------------------" >> /din/1/filebyscript.txt
+ifconfig >> /din/1/filebyscript.txt
+
+
+----------------
+Thereafter, create a playbook to run this script with argument passing on the target machine. arguments can be separated in playbook with space and it can be called in script with dollar followed by serial number of that argument. like as called in the above script with $1
+
+------------
+
+- name: "running script on server2 from control node, without copying the script on target machine"
+  hosts: server2
+  tasks:
+    -
+      name: "running a script to run commands"
+      script: testscript.sh firstscript
+
+
+
+
+
+------------
+
+
+
+
