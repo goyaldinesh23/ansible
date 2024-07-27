@@ -1,0 +1,27 @@
+apt install whois {this is required to run mkpasswd command}
+
+run 
+mkpasswd --method=sha-512 
+
+to create encrypted password....... copy the shown password and paste in playbook
+
+
+- name: managing users with ansible
+  hosts: servers
+  tasks:
+    - name: adding new user to target machine
+      user: name=rohan state=present password="$6$.b5stEPap$CzRjqghQutEFWhOO/jUd6isK1C1SkGKCu9B7rKu4ECjo12TYRUaFolbD.jdcy09LXT33P/p6CEZjEBn.Bc/2N."
+
+
+
+
+
+
+here is the playbook for deleting that user
+- name: managing users with ansible
+  hosts: servers
+  tasks:
+    - name: deleting rohan user to target machine
+      user: name=rohan state=absent
+
+
