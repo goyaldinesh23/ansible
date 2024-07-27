@@ -1,0 +1,20 @@
+- name: managing services on target machine
+  hosts: server1
+  tasks:
+    - name: installing apache2 server
+      apt:
+        name: apache2
+        state: present
+    - name: "starting apache2 server"
+      service:
+        name: apache2
+        state: started
+    - name: copy index.html file from control machine to target machine
+      copy: src=index.html dest=/var/www/html/index.html mode=644
+
+
+
+Output
+First task installs apache server
+second one is starting apache server
+third one is copying a customized index.html file to the default directory of apache
