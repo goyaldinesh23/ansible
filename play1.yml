@@ -1,0 +1,49 @@
+- name: "first play with touch"
+  hosts: server1
+  tasks:
+    -
+      name: "make directory"
+      command: mkdir /din/1
+    -
+      name: "first touch file on server1"
+      command: touch /din/1/touch2.txt
+-
+  name: "second play with touch"
+  hosts: server2
+  tasks:
+    -
+      name: "make directory"
+      command: mkdir /din/1
+    - name: "second touch file on server2"
+      command: touch /din/1/touch2.txt
+
+
+
+
+
+
+
+Output
+The first play creates a folder (1) on server1 and a file (touch2.txt) on server1 which is defined in the hosts file.
+The second play creates a folder (1) on server2 and a file (touch2.txt) on server2 which is defined in the hosts file.
+
+
+----------------------------------------------------------
+
+Alternative way
+- name: "create a file on both server through goup"
+  hosts: servers
+  tasks:
+    -
+      name: "make directory"
+      command: mkdir /din/1
+    - name: "create file on group through one play"
+      command: touch /din/1/file-through-group.txt
+
+
+
+Output
+The play creates a folder (1) on server1 and a file (file-through-group.txt) on a group (servers) which contains server1 and server 2  defined in the hosts file.ff
+
+
+
