@@ -1,0 +1,18 @@
+- name: install apache on target machine through variable
+  hosts: server2
+  vars:
+    servicename: apache2
+  tasks:
+    - name: calling variable and installing service
+      apt:
+        name: "{{ servicename }}"
+        state: present
+    - name: calling variable and starting service
+      service:
+        name: "{{ servicename }}"
+        state: started
+
+
+
+
+Installs and starts apache2 server
