@@ -1,0 +1,21 @@
+- name: using lineinfile module
+  hosts: server1
+  tasks:
+    -
+      name: adding a line to a remote server
+      lineinfile: path=/din/1/test.txt line="dummy line"
+
+
+
+
+Output
+First-time run: added the given line on the given file.
+Second-time run: No changes were done to the given file as it had already same line.
+
+
+This happened due to idempotency. Most of the ansible modules have built-in feature of idempotency and those modules can also be said idempotent modules.
+What is idempotency?
+It is a property which ensures that performing one operation many times will produce the same result as it was executed only once and it does not make any changes during multiple executions if the desired state is present in the system.
+For example: if you have written a play for installing http server and run it once, it will install http server. If you are running the same playbook on the same hosts, then, it will not make any effect on the hosts, as http server is already there on hosts.
+
+
