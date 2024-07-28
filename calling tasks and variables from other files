@@ -1,0 +1,65 @@
+create a variable file and save with .yml
+var1: a
+var2: b
+var3: c
+var4: d
+var5: e
+var6: f
+var7: g
+var8: h
+var9: i
+var10: j
+var11: k
+var12: l
+var12: m
+var13: n
+var14: o
+
+
+create a tasks file and save with .yml
+
+  
+- name: Task 1
+  command: touch /din/12/{{ var1 }}.txt
+- name: Task 2
+  command: touch /din/12/{{ var2 }}.txt
+- name: Task 3
+  command: touch /din/12/{{ var3 }}.txt
+- name: Task 4
+  command: touch /din/12/{{ var4 }}.txt
+- name: Task 5
+  command: touch /din/12/{{ var5 }}.txt
+- name: Task 6
+  command: touch /din/12/{{ var6 }}.txt
+- name: Task 7
+  command: touch /din/12/{{ var7 }}.txt
+- name: Task 8
+  command: touch /din/12/{{ var8 }}.txt
+- name: Task 9
+  command: touch /din/12/{{ var9 }}.txt
+- name: Task 10
+  command: touch /din/12/{{ var10 }}.txt
+- name: Task 11
+  command: touch /din/12/{{ var11 }}.txt
+- name: Task 12
+  command: touch /din/12/{{ var12 }}.txt
+- name: Task 13
+  command: touch /din/12/{{ var13 }}.txt
+- name: Task 14
+  command: touch /din/12/{{ var14 }}.txt
+
+
+
+
+
+  calling tasks and variables in main playbook and running it
+
+
+- name: Calling variable and tasks from file
+  hosts: server2
+  vars_files:
+    - variables.yml
+  tasks:
+    - include: tasks.yml
+
+  
