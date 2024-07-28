@@ -1,0 +1,10 @@
+- name: first play with variable and loop
+  hosts: server1
+  vars:
+    packg:
+      - apache2
+      - vsftpd
+  tasks:
+    - name: manage services and packages through variable n loop
+      apt: name="{{ item }}" state=absent
+      with_items: "{{ packg }}"
