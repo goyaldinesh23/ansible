@@ -1,0 +1,44 @@
+When: variable == value
+>
+<
+
+> and <
+
+
+
+- name: first play with variable
+  hosts: server1
+  vars:
+    age: 21
+  tasks:
+    - name: create touch file if age is 20
+      command: touch /din/1/touch20.txt
+      when: age == 20
+    - name: create touch file if age is greater than 20
+      when: age > 20
+      command: touch /din/1/touchgreater.txt
+
+
+
+
+
+
+- name: first play with variable
+  hosts: server1
+  vars:
+    age: 12
+  tasks:
+    - name: create touch file if age is 20
+      command: touch /din/1/touch20.txt
+      when: age == 20
+    - name: create touch file if age is greater than 20
+      when: age > 20
+      command: touch /din/1/touchgreater.txt
+    - name: create touch file if age is between  than 10 and 20
+      when: age > 10 and age < 20
+      command: touch /din/1/touchbetween.txt
+    - name: create touch file if age is 10 or 12
+      when: age == 10 or age == 12
+      command: touch /din/1/touch10or12.txt
+
+
