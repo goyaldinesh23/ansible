@@ -1,0 +1,14 @@
+
+- name: "running tasks on server1"
+  hosts: server1
+  vars_files:
+    - variables.yml
+  tasks:
+    - include: tasks1.yml
+-
+  name: "second play with touch"
+  hosts: server2
+  vars_files:
+    - variables.yml
+  tasks:
+    - include: tasks2.yml
