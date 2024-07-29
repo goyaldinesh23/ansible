@@ -1,0 +1,89 @@
+#First or all make a directory to manage roles /etc/ansible/roles/ and go to this directory
+
+#RUN the following command to create dummy roles
+ansible-galaxy init createfiles
+
+#second role
+ansible-galaxy init createfiles2
+
+#Now edit tasks/main.yml file of first role 
+nano /etc/ansible/roles/createfiles/tasks/main.yml
+
+#and add your tasks
+
+- name: Task 1
+  command: touch /din/12/{{ var1 }}.txt
+- name: Task 2
+  command: touch /din/12/{{ var2 }}.txt
+- name: Task 3
+  command: touch /din/12/{{ var3 }}.txt
+- name: Task 4
+  command: touch /din/12/{{ var4 }}.txt
+- name: Task 5
+  command: touch /din/12/{{ var5 }}.txt
+- name: Task 6
+  command: touch /din/12/{{ var6 }}.txt
+- name: Task 7
+  command: touch /din/12/{{ var7 }}.txt
+
+#then edit vars/main.yml file of first role 
+nano /etc/ansible/roles/createfiles/vars/main.yml
+
+#and add your variables
+
+var1: a
+var2: b
+var3: c
+var4: d
+var5: e
+var6: f
+var7: g
+
+
+#similarly add tasks and variable files in other role (createfiles2)
+var8: h
+var9: i
+var10: j
+var11: k
+var12: l
+var13: m
+var14: n
+
+
+#tasks  
+
+- name: Task 8
+  command: touch /din/12/{{ var8 }}.txt
+- name: Task 9
+  command: touch /din/12/{{ var9 }}.txt
+- name: Task 10
+  command: touch /din/12/{{ var10 }}.txt
+- name: Task 11
+  command: touch /din/12/{{ var11 }}.txt
+- name: Task 12
+  command: touch /din/12/{{ var12 }}.txt
+- name: Task 13
+  command: touch /din/12/{{ var13 }}.txt
+- name: Task 14
+  command: touch /din/12/{{ var14 }}.txt
+
+
+
+
+
+#Now create a playbook and run these roles
+nano /etc/ansible/playbook/playroles.yml
+
+
+- name: "1st play to run tasks using roles"
+  hosts: server1
+  roles:
+    - createfiles
+- name: "2nd play to run tasks using roles"
+  hosts: server2
+  roles:
+    - createfiles2
+
+
+
+
