@@ -10,3 +10,55 @@ Forks: value
 Strategy: Free | Linear
 #Linear is default which runs task 1 on all machines first then leads to second task. Whereas free  strategy runs all tasks on all machines simultaneously. This can be defined in playbook.
 
+
+
+#Error Handling - Default Behaviour
+#Running on one server: When a task fails, it stops executing tasks.
+#Running on two servers: When a task fails on server 1 but executes successfully on server2, then other tasks on server 1 will not be executed and other tasks on server 2 will be completed properly. 
+#To ignore errors and run other tasks on server 1 use the following handler in the task.
+ignore_errors: True
+
+
+- name: first play
+  hosts: server1
+  vars:
+    my_name: Dinesh
+
+    dummy_list:
+      - 1
+      - 5
+      - -6
+      - 10
+      - 0
+      - 5
+    dummy_list2:
+      - 10
+      - 5
+      - -6
+      - 11
+      - 0
+  tasks:
+    - debug:
+        msg: "Hello World"
+    - debug:
+        msg: "Hello {{ my_name }}"
+    - debug:
+        msg: "Hello {{ my_name | upper }}"
+    - debug:
+        msg: "Hello {{ my_name | lower }}"
+    - debug:
+        msg: "Hello {{ my_name | replace('dinesh','ishu') }}"
+    - debug:
+        msg: "Hello {{ dummy_list | min }}"
+    - debug:
+        msg: "Hello {{ dummy_list | max }}"
+    - debug:
+        msg: "Hello {{ dummy_list | unique }}"
+    - debug:
+        msg: "Hello {{ dummy_list | union (dummy_list2) }}"
+    - debug:
+        msg: "Hello {{ dummy_list | random }}"
+    - debug:
+        msg: "Hello {{ '/etc/ansible/ansible.cfg' | basename }}"
+
+
