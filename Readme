@@ -1,1 +1,12 @@
 This is my repository to store ansible playbooks, I used while my learning
+
+
+Serial: value
+# to define the number of target macines to run the play concurrently. Thereafter, it will pick other machines in the batch as asfined in serial. This is used inside the playbook.
+
+Forks: value
+#this can be defined in the ansible.cfg to define the number of target machines in one go.
+
+Strategy: Free | Linear
+#Linear is default which runs task 1 on all machines first then leads to second task. Whereas free  strategy runs all tasks on all machines simultaneously. This can be defined in playbook.
+
