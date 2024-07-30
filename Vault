@@ -1,0 +1,11 @@
+This is used to lock the inventory file so that users can not access it without password.
+
+
+ansible-valuat encrypt file name 
+
+ansible-valuat encrypt file name --output newfilename
+
+ansible-vault view file name
+
+--ask-vault-pass
+#while running playbook
