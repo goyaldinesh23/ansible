@@ -1,0 +1,8 @@
+- 
+  name: running a play and fetching password through lookups
+  hosts: server1
+  vars:
+    ansible_ssh_pass: "{{ lookup('csvfile', 'server1 file=credentials.csv delimiter=,') }}"
+  tasks:
+  - name: using touch command to create file
+    command: touch /din/1/lookup.txt
