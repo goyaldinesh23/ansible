@@ -1,0 +1,8 @@
+-
+  name: running a play and fetching password through lookups
+  hosts: server2
+  vars:
+    ansible_ssh_pass: "{{ lookup('ini', 'password section=server2 file=credentials.ini') }}"
+  tasks:
+  - name: using touch command to create file
+    command: touch /din/1/lookup.txt
